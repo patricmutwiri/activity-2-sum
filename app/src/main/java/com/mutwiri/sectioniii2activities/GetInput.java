@@ -31,27 +31,35 @@ public class GetInput extends AppCompatActivity implements View.OnClickListener 
         Button calc=(Button)findViewById(R.id.button2);
         calc.setOnClickListener(this);
     }
+
+    @Override
     public void onClick(View view) {
         Intent data = new Intent("com.mutwiri.sectioniii2activities.MainActivity");
-
-        fnumber = fnumber.findViewById(R.id.entrynumber1);
-        snumber = snumber.findViewById(R.id.entrynumber2);
         resultsDisplay = "Error encountered. ";
+        try {
+            fnumber = findViewById(R.id.entrynumber1);
+            snumber = findViewById(R.id.entrynumber2);
+        } catch (Exception e) {
+            fnumber = null;
+            snumber = null;
+            resultsDisplay = " N/A "+e.getMessage();
+            Log.v(myTag,e.getMessage());
+        }
 
         if(fnumber != null && snumber != null) {
             try {
                 number1 = Float.parseFloat(fnumber.getText().toString());
                 number2 = Float.parseFloat(snumber.getText().toString());
-                total = (number1*1.0)+(number2*1.0);
+                total = number1+number2;
                 resultsDisplay = String.format("\nThe sum of %.2f and %.2f is %.2f ",number1,number2,total);
+                Log.v(myTag,resultsDisplay);
             } catch (Exception e) {
                 Log.v(myTag,e.getMessage());
                 resultsDisplay = e.getMessage();
             }
+            data.setData(Uri.parse(resultsDisplay));
+            setResult(RESULT_OK, data);
+            finish();
         }
-
-        data.setData(Uri.parse(resultsDisplay));
-        setResult(RESULT_OK, data);
-        finish();
     }
 }
