@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Section III 2 Activities</string>
+    <string name="number1">First Number</string>
+    <string name="number2">Second Number</string>
+    <string name="results">Results</string>
+    <string name="getInput">Get Input</string>
+    <string name="calc">Exit</string>
+    <string name="title_activity_get_input">GetInput</string>
+</resources>
