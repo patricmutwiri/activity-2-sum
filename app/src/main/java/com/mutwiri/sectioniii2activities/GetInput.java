@@ -32,18 +32,17 @@ public class GetInput extends AppCompatActivity implements View.OnClickListener 
         calc.setOnClickListener(this);
     }
     public void onClick(View view) {
-        Intent data = new Intent();
+        Intent data = new Intent("com.mutwiri.sectioniii2activities.MainActivity");
 
         fnumber = fnumber.findViewById(R.id.entrynumber1);
         snumber = snumber.findViewById(R.id.entrynumber2);
-        resultsDisplay = "";
+        resultsDisplay = "Error encountered. ";
 
-        if(fnumber != null) {
+        if(fnumber != null && snumber != null) {
             try {
                 number1 = Float.parseFloat(fnumber.getText().toString());
                 number2 = Float.parseFloat(snumber.getText().toString());
                 total = (number1*1.0)+(number2*1.0);
-
                 resultsDisplay = String.format("\nThe sum of %.2f and %.2f is %.2f ",number1,number2,total);
             } catch (Exception e) {
                 Log.v(myTag,e.getMessage());
