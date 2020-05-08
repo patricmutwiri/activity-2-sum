@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,8 +31,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // load input activity
-                Intent getInput = new Intent("com.mutwiri.GetInput");
+                Intent getInput = new Intent("com.mutwiri.sectioniii2activities.GetInput");
                 startActivityForResult(getInput,1);
+            }
+
+            public void onActivityResult(int requestCode, int resultCode, Intent data) {
+                if (requestCode == 1) {
+                    if (resultCode == RESULT_OK) {
+                        /*Toast.makeText(getInput, data.getData().toString(),
+                                Toast.LENGTH_LONG).show();*/
+                    }
+                }
             }
         });
         //
